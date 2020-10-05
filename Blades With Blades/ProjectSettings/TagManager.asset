@@ -11,6 +11,7 @@ TagManager:
   - EvilGrass
   - Sword
   - Fence
+  - Music
   layers:
   - Default
   - TransparentFX

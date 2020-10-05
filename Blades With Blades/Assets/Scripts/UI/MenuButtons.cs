@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class MenuButtons : MonoBehaviour
 {
-    public GameObject deathPanel, pauzePanel;
+    public GameObject deathPanel, pausePanel;
     public Text scoreValueText;
     public Text scoreValueTextDeath;
+    public Slider volumeSlider;
 
     public string ScoreText 
     { 
@@ -21,6 +22,19 @@ public class MenuButtons : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        volumeSlider.value = AudioListener.volume;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
     }
 
     public void Die()
@@ -42,6 +56,24 @@ public class MenuButtons : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void TogglePause()
+    {
+        if (pausePanel.activeSelf)
+        {
+            GameManager.Instance.StartTime();
+            pausePanel.SetActive(false);
+            return;
+        }
+        
+        GameManager.Instance.StopTime();
+        pausePanel.SetActive(true);
+    }
+
     #endregion
+
+    public void SetVolume(float volume)
+    {
+        AudioListener.volume = volume;
+    }
 
 }

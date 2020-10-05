@@ -8,7 +8,12 @@ public class MainMenuManager : MonoBehaviour
 {
     public GameObject settingsPanel, creditsPanel, howToPanel;
     public Button playButton;
+    public Slider volumeSlider;
 
+    private void Start()
+    {
+        volumeSlider.value = AudioListener.volume;
+    }
 
     #region buttons
     public void PlayButton()
@@ -41,6 +46,11 @@ public class MainMenuManager : MonoBehaviour
         howToPanel.SetActive(!howToPanel.activeSelf);
         settingsPanel.SetActive(false);
         creditsPanel.SetActive(false);
+    }
+
+    public void SetVolume(float volume)
+    {
+        AudioListener.volume = volume;
     }
     #endregion
 }
