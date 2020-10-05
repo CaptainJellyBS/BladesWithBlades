@@ -8,7 +8,7 @@ public class SwordCollision : MonoBehaviour
     {
         if(collision.collider.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Die player die die die");
+            GameManager.Instance.Die();
         }
     }
 }

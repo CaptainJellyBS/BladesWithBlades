@@ -8,6 +8,7 @@ public class EvilGrassCollision : MonoBehaviour
     {
         if (collision.collider.gameObject.CompareTag("MowerBlade"))
         {
+            GameManager.Instance.Score += transform.parent.GetComponent<EvilGrass>().scoreOnKill;
             Destroy(transform.parent.gameObject);
         }
     }
