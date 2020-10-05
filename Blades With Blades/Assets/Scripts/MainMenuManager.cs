@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public GameObject settingsPanel, creditsPanel;
+    public GameObject settingsPanel, creditsPanel, howToPanel;
+    public Button playButton;
 
 
     #region buttons
@@ -23,12 +25,22 @@ public class MainMenuManager : MonoBehaviour
     {
         settingsPanel.SetActive(!settingsPanel.activeSelf);
         creditsPanel.SetActive(false);
+        howToPanel.SetActive(false);
     }
 
     public void ToggleCreditsPanel()
     {
         creditsPanel.SetActive(!creditsPanel.activeSelf);
         settingsPanel.SetActive(false);
+        howToPanel.SetActive(false);
+    }
+
+    public void ToggleHowToPanel()
+    {
+        playButton.interactable = true;
+        howToPanel.SetActive(!howToPanel.activeSelf);
+        settingsPanel.SetActive(false);
+        creditsPanel.SetActive(false);
     }
     #endregion
 }
