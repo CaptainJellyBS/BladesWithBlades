@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float rotationSpeed, movementSpeed;
-    // Start is called before the first frame update
-    void Start()
+    public static PlayerMovement Instance { get; private set; }
+
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
     // Update is called once per frame

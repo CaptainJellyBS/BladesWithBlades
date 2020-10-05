@@ -26,7 +26,10 @@ public class NormalGrass : MonoBehaviour
     {
         if(other.gameObject.CompareTag("MowerBlade") || other.gameObject.CompareTag("Sword"))
         {
-            StopCoroutine(grow);
+            if (grow != null)
+            {
+                StopCoroutine(grow);
+            }
 
             transform.localScale = new Vector3(transform.localScale.x, minScale, transform.localScale.z);
             grow = Grow();
